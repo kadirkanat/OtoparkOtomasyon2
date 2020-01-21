@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OtoparkOtomasyonModelStoreContainer" CdmEntityContainer="OtoparkOtomasyonEntities">
+    <EntitySetMapping Name="Aboneler">
+      <EntityTypeMapping TypeName="OtoparkOtomasyonModel.Aboneler">
+        <MappingFragment StoreEntitySet="Aboneler">
+          <ScalarProperty Name="AbonelikDurumu" ColumnName="AbonelikDurumu" />
+          <ScalarProperty Name="AracTipiID" ColumnName="AracTipiID" />
+          <ScalarProperty Name="PlakaNo" ColumnName="PlakaNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="TC" ColumnName="TC" />
+          <ScalarProperty Name="AboneID" ColumnName="AboneID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AracTipleri">
+      <EntityTypeMapping TypeName="OtoparkOtomasyonModel.AracTipleri">
+        <MappingFragment StoreEntitySet="AracTipleri">
+          <ScalarProperty Name="AracTipi" ColumnName="AracTipi" />
+          <ScalarProperty Name="AracTipiID" ColumnName="AracTipiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanıcı">
+      <EntityTypeMapping TypeName="OtoparkOtomasyonModel.Kullanıcı">
+        <MappingFragment StoreEntitySet="Kullanıcı">
+          <ScalarProperty Name="KullanıcıSİfre" ColumnName="KullanıcıSİfre" />
+          <ScalarProperty Name="KullanıcıAdı" ColumnName="KullanıcıAdı" />
+          <ScalarProperty Name="KullanıcıID" ColumnName="KullanıcıID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkYeri">
+      <EntityTypeMapping TypeName="OtoparkOtomasyonModel.ParkYeri">
+        <MappingFragment StoreEntitySet="ParkYeri">
+          <ScalarProperty Name="TarihÇıkış" ColumnName="TarihÇıkış" />
+          <ScalarProperty Name="TarihGiriş" ColumnName="TarihGiriş" />
+          <ScalarProperty Name="AboneID" ColumnName="AboneID" />
+          <ScalarProperty Name="ParkDurumu" ColumnName="ParkDurumu" />
+          <ScalarProperty Name="ParkYeriID" ColumnName="ParkYeriID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

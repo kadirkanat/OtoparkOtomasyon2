@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OtoparkOtomasyonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Aboneler">
+    <Key>
+      <PropertyRef Name="AboneID" />
+    </Key>
+    <Property Name="AboneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PlakaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AracTipiID" Type="Int32" />
+    <Property Name="AbonelikDurumu" Type="Boolean" />
+    <NavigationProperty Name="AracTipleri" Relationship="Self.FK_Aboneler_AracTipleri" FromRole="Aboneler" ToRole="AracTipleri" />
+    <NavigationProperty Name="ParkYeri" Relationship="Self.FK_ParkYeri_Aboneler" FromRole="Aboneler" ToRole="ParkYeri" />
+  </EntityType>
+  <EntityType Name="AracTipleri">
+    <Key>
+      <PropertyRef Name="AracTipiID" />
+    </Key>
+    <Property Name="AracTipiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AracTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Aboneler" Relationship="Self.FK_Aboneler_AracTipleri" FromRole="AracTipleri" ToRole="Aboneler" />
+  </EntityType>
+  <EntityType Name="ParkYeri">
+    <Key>
+      <PropertyRef Name="ParkYeriID" />
+    </Key>
+    <Property Name="ParkYeriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParkDurumu" Type="Boolean" Nullable="false" />
+    <Property Name="AboneID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Aboneler" Relationship="Self.FK_ParkYeri_Aboneler" FromRole="ParkYeri" ToRole="Aboneler" />
+  </EntityType>
+  <Association Name="FK_Aboneler_AracTipleri">
+    <End Role="AracTipleri" Type="Self.AracTipleri" Multiplicity="0..1" />
+    <End Role="Aboneler" Type="Self.Aboneler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AracTipleri">
+        <PropertyRef Name="AracTipiID" />
+      </Principal>
+      <Dependent Role="Aboneler">
+        <PropertyRef Name="AracTipiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParkYeri_Aboneler">
+    <End Role="Aboneler" Type="Self.Aboneler" Multiplicity="1" />
+    <End Role="ParkYeri" Type="Self.ParkYeri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aboneler">
+        <PropertyRef Name="AboneID" />
+      </Principal>
+      <Dependent Role="ParkYeri">
+        <PropertyRef Name="AboneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OtoparkOtomasyonEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Aboneler" EntityType="Self.Aboneler" />
+    <EntitySet Name="AracTipleri" EntityType="Self.AracTipleri" />
+    <EntitySet Name="ParkYeri" EntityType="Self.ParkYeri" />
+    <AssociationSet Name="FK_Aboneler_AracTipleri" Association="Self.FK_Aboneler_AracTipleri">
+      <End Role="AracTipleri" EntitySet="AracTipleri" />
+      <End Role="Aboneler" EntitySet="Aboneler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParkYeri_Aboneler" Association="Self.FK_ParkYeri_Aboneler">
+      <End Role="Aboneler" EntitySet="Aboneler" />
+      <End Role="ParkYeri" EntitySet="ParkYeri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

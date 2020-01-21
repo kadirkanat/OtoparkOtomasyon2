@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OtoparkOtomasyonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Aboneler">
+    <Key>
+      <PropertyRef Name="AboneID" />
+    </Key>
+    <Property Name="AboneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TC" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="PlakaNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="AracTipiID" Type="int" />
+    <Property Name="AbonelikDurumu" Type="bit" />
+  </EntityType>
+  <EntityType Name="AracTipleri">
+    <Key>
+      <PropertyRef Name="AracTipiID" />
+    </Key>
+    <Property Name="AracTipiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AracTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanıcı">
+    <Key>
+      <PropertyRef Name="KullanıcıID" />
+    </Key>
+    <Property Name="KullanıcıID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KullanıcıAdı" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KullanıcıSİfre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParkYeri">
+    <Key>
+      <PropertyRef Name="ParkYeriID" />
+    </Key>
+    <Property Name="ParkYeriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParkDurumu" Type="bit" Nullable="false" />
+    <Property Name="AboneID" Type="int" Nullable="false" />
+    <Property Name="TarihGiriş" Type="datetime" />
+    <Property Name="TarihÇıkış" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_ParkYeri_Aboneler">
+    <End Role="Aboneler" Type="Self.Aboneler" Multiplicity="1" />
+    <End Role="ParkYeri" Type="Self.ParkYeri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aboneler">
+        <PropertyRef Name="AboneID" />
+      </Principal>
+      <Dependent Role="ParkYeri">
+        <PropertyRef Name="AboneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OtoparkOtomasyonModelStoreContainer">
+    <EntitySet Name="Aboneler" EntityType="Self.Aboneler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AracTipleri" EntityType="Self.AracTipleri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanıcı" EntityType="Self.Kullanıcı" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ParkYeri" EntityType="Self.ParkYeri" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ParkYeri_Aboneler" Association="Self.FK_ParkYeri_Aboneler">
+      <End Role="Aboneler" EntitySet="Aboneler" />
+      <End Role="ParkYeri" EntitySet="ParkYeri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

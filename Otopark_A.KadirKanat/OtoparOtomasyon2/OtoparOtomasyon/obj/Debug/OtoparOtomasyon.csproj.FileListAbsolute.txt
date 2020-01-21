@@ -1,0 +1,17 @@
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\bin\Debug\OtoparOtomasyon.exe.config
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\bin\Debug\OtoparOtomasyon.exe
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\bin\Debug\OtoparOtomasyon.pdb
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.csprojAssemblyReference.cache
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.Form1.resources
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.Properties.Resources.resources
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.csproj.GenerateResource.cache
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.exe
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.pdb
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\bin\Debug\EntityFramework.dll
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\bin\Debug\EntityFramework.xml
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.csproj.CopyComplete
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.Form2.resources
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.Form3.resources
+C:\Users\Wissen\source\repos\OtoparOtomasyon\OtoparOtomasyon\obj\Debug\OtoparOtomasyon.MusteriKayıt.resources

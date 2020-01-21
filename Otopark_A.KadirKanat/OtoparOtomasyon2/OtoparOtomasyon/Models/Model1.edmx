@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OtoparkOtomasyonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aboneler">
+          <Key>
+            <PropertyRef Name="AboneID" />
+          </Key>
+          <Property Name="AboneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TC" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlakaNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AracTipiID" Type="int" />
+          <Property Name="AbonelikDurumu" Type="bit" />
+        </EntityType>
+        <EntityType Name="AracTipleri">
+          <Key>
+            <PropertyRef Name="AracTipiID" />
+          </Key>
+          <Property Name="AracTipiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AracTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanıcı">
+          <Key>
+            <PropertyRef Name="KullanıcıID" />
+          </Key>
+          <Property Name="KullanıcıID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullanıcıAdı" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KullanıcıSİfre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParkYeri">
+          <Key>
+            <PropertyRef Name="ParkYeriID" />
+          </Key>
+          <Property Name="ParkYeriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParkDurumu" Type="bit" Nullable="false" />
+          <Property Name="AboneID" Type="int" Nullable="false" />
+          <Property Name="TarihGiriş" Type="datetime" />
+          <Property Name="TarihÇıkış" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_ParkYeri_Aboneler">
+          <End Role="Aboneler" Type="Self.Aboneler" Multiplicity="1" />
+          <End Role="ParkYeri" Type="Self.ParkYeri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aboneler">
+              <PropertyRef Name="AboneID" />
+            </Principal>
+            <Dependent Role="ParkYeri">
+              <PropertyRef Name="AboneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OtoparkOtomasyonModelStoreContainer">
+          <EntitySet Name="Aboneler" EntityType="Self.Aboneler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AracTipleri" EntityType="Self.AracTipleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanıcı" EntityType="Self.Kullanıcı" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParkYeri" EntityType="Self.ParkYeri" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ParkYeri_Aboneler" Association="Self.FK_ParkYeri_Aboneler">
+            <End Role="Aboneler" EntitySet="Aboneler" />
+            <End Role="ParkYeri" EntitySet="ParkYeri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OtoparkOtomasyonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OtoparkOtomasyonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aboneler" EntityType="OtoparkOtomasyonModel.Aboneler" />
+          <EntitySet Name="AracTipleri" EntityType="OtoparkOtomasyonModel.AracTipleri" />
+          <EntitySet Name="Kullanıcı" EntityType="OtoparkOtomasyonModel.Kullanıcı" />
+          <EntitySet Name="ParkYeri" EntityType="OtoparkOtomasyonModel.ParkYeri" />
+          <AssociationSet Name="FK_ParkYeri_Aboneler" Association="OtoparkOtomasyonModel.FK_ParkYeri_Aboneler">
+            <End Role="Aboneler" EntitySet="Aboneler" />
+            <End Role="ParkYeri" EntitySet="ParkYeri" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Aboneler">
+          <Key>
+            <PropertyRef Name="AboneID" />
+          </Key>
+          <Property Name="AboneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlakaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AracTipiID" Type="Int32" />
+          <Property Name="AbonelikDurumu" Type="Boolean" />
+          <NavigationProperty Name="ParkYeri" Relationship="OtoparkOtomasyonModel.FK_ParkYeri_Aboneler" FromRole="Aboneler" ToRole="ParkYeri" />
+        </EntityType>
+        <EntityType Name="AracTipleri">
+          <Key>
+            <PropertyRef Name="AracTipiID" />
+          </Key>
+          <Property Name="AracTipiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AracTipi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Kullanıcı">
+          <Key>
+            <PropertyRef Name="KullanıcıID" />
+          </Key>
+          <Property Name="KullanıcıID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullanıcıAdı" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullanıcıSİfre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ParkYeri">
+          <Key>
+            <PropertyRef Name="ParkYeriID" />
+          </Key>
+          <Property Name="ParkYeriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParkDurumu" Type="Boolean" Nullable="false" />
+          <Property Name="AboneID" Type="Int32" Nullable="false" />
+          <Property Name="TarihGiriş" Type="DateTime" Precision="3" />
+          <Property Name="TarihÇıkış" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Aboneler" Relationship="OtoparkOtomasyonModel.FK_ParkYeri_Aboneler" FromRole="ParkYeri" ToRole="Aboneler" />
+        </EntityType>
+        <Association Name="FK_ParkYeri_Aboneler">
+          <End Type="OtoparkOtomasyonModel.Aboneler" Role="Aboneler" Multiplicity="1" />
+          <End Type="OtoparkOtomasyonModel.ParkYeri" Role="ParkYeri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aboneler">
+              <PropertyRef Name="AboneID" />
+            </Principal>
+            <Dependent Role="ParkYeri">
+              <PropertyRef Name="AboneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OtoparkOtomasyonModelStoreContainer" CdmEntityContainer="OtoparkOtomasyonEntities">
+          <EntitySetMapping Name="Aboneler">
+            <EntityTypeMapping TypeName="OtoparkOtomasyonModel.Aboneler">
+              <MappingFragment StoreEntitySet="Aboneler">
+                <ScalarProperty Name="AbonelikDurumu" ColumnName="AbonelikDurumu" />
+                <ScalarProperty Name="AracTipiID" ColumnName="AracTipiID" />
+                <ScalarProperty Name="PlakaNo" ColumnName="PlakaNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="AboneID" ColumnName="AboneID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AracTipleri">
+            <EntityTypeMapping TypeName="OtoparkOtomasyonModel.AracTipleri">
+              <MappingFragment StoreEntitySet="AracTipleri">
+                <ScalarProperty Name="AracTipi" ColumnName="AracTipi" />
+                <ScalarProperty Name="AracTipiID" ColumnName="AracTipiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanıcı">
+            <EntityTypeMapping TypeName="OtoparkOtomasyonModel.Kullanıcı">
+              <MappingFragment StoreEntitySet="Kullanıcı">
+                <ScalarProperty Name="KullanıcıSİfre" ColumnName="KullanıcıSİfre" />
+                <ScalarProperty Name="KullanıcıAdı" ColumnName="KullanıcıAdı" />
+                <ScalarProperty Name="KullanıcıID" ColumnName="KullanıcıID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParkYeri">
+            <EntityTypeMapping TypeName="OtoparkOtomasyonModel.ParkYeri">
+              <MappingFragment StoreEntitySet="ParkYeri">
+                <ScalarProperty Name="TarihÇıkış" ColumnName="TarihÇıkış" />
+                <ScalarProperty Name="TarihGiriş" ColumnName="TarihGiriş" />
+                <ScalarProperty Name="AboneID" ColumnName="AboneID" />
+                <ScalarProperty Name="ParkDurumu" ColumnName="ParkDurumu" />
+                <ScalarProperty Name="ParkYeriID" ColumnName="ParkYeriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
